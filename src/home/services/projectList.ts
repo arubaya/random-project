@@ -1,6 +1,7 @@
 // Image
 import NeumporphCalcImage from '../../assets/images/neumorphism-calc-preview.png';
 import SudokuSolverImage from '../../assets/images/sudoku-solver-priview.png';
+import HummingbirdPreview from '../../assets/images/hummingbird-preview.png';
 
 const projectList = [
   {
@@ -12,6 +13,11 @@ const projectList = [
     image: SudokuSolverImage,
     to: '/sudoku-solver',
     title: 'Sudoku Solver',
+  },
+  {
+    image: HummingbirdPreview,
+    to: '/hummingbird',
+    title: 'Hummingbird',
   },
 ];
 

@@ -24,6 +24,14 @@ export default function Router() {
           </Header>
         }
       />
+      <Route
+        path="/hummingbird"
+        element={
+          <Header>
+            <Page.HummingbirdPage />
+          </Header>
+        }
+      />
     </Routes>
   );
 }
