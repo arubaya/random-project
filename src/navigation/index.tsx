@@ -32,6 +32,14 @@ export default function Router() {
           </Header>
         }
       />
+      <Route
+        path="/simple-aimlab"
+        element={
+          <Header>
+            <Page.SimpleAimLab />
+          </Header>
+        }
+      />
     </Routes>
   );
 }
