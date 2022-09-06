@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   important: '#tailwind-root',
   theme: {
+    fontFamily: {
+      'serif': ['Inter', 'sans-serif'],
+    },
     extend: {},
   },
   corePlugins: {

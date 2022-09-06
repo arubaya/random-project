@@ -70,7 +70,7 @@ export default function NeumorphismCalcPage() {
   return (
     <Box
       tabIndex={0}
-      className="min-w-screen min-h-screen flex justify-center items-center"
+      className="w-full h-full flex justify-center items-center"
       sx={{ backgroundColor: '#edf1f4' }}
       onKeyDown={(e) => handleKeyboardPres(e.key)}
     >
