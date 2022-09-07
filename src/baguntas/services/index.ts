@@ -18,17 +18,17 @@ const handleGameWinner = ({ player1, player2 }: PlayersChoiceData) => {
   let winnerPlayer: string;
 
   if (player1.choice == '🖐' && player2.choice == '✌') {
-    return (winnerPlayer = player1.name);
+    return (winnerPlayer = player2.name);
   } else if (player1.choice == '🖐' && player2.choice == '✊') {
-    return (winnerPlayer = player2.name);
+    return (winnerPlayer = player1.name);
   } else if (player1.choice == '✌' && player2.choice == '🖐') {
-    return (winnerPlayer = player2.name);
+    return (winnerPlayer = player1.name);
   } else if (player1.choice == '✌' && player2.choice == '✊') {
-    return (winnerPlayer = player1.name);
-  } else if (player1.choice == '✊' && player2.choice == '🖐') {
-    return (winnerPlayer = player1.name);
-  } else if (player1.choice == '✊' && player2.choice == '✌') {
     return (winnerPlayer = player2.name);
+  } else if (player1.choice == '✊' && player2.choice == '🖐') {
+    return (winnerPlayer = player2.name);
+  } else if (player1.choice == '✊' && player2.choice == '✌') {
+    return (winnerPlayer = player1.name);
   } else {
     return (winnerPlayer = 'SERI');
   }
@@ -95,20 +95,7 @@ export const restartGame = () => {
     })
   );
 
-  dispatch(
-    setWinnerName(
-      handleGameWinner({
-        player1: {
-          choice: '',
-          name: '',
-        },
-        player2: {
-          choice: '',
-          name: '',
-        },
-      })
-    )
-  );
+  dispatch(setWinnerName(''));
   dispatch(setIsResultDisplay(false));
   dispatch(setYourChoice('-'));
   dispatch(setCountingDown(3));

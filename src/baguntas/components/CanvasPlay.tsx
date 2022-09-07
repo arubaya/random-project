@@ -19,18 +19,26 @@ export default function CanvasPlay() {
       value: '✌',
     },
     {
-      display: '✋',
-      value: '✋',
+      display: '🖐',
+      value: '🖐',
     },
   ];
 
   const { isResultDisplay } = useSelector(
     (state: RootState) => state.baguntasReducer
   );
+  const [isWaitGame, setIsWaitGame] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsWaitGame(false);
+  }, [isResultDisplay]);
 
   const handleChoose = (choice: string) => {
-    dispatch(setYourChoice(choice));
-    withBotGameplayMode();
+    if (!isWaitGame) {
+      dispatch(setYourChoice(choice));
+      withBotGameplayMode();
+      setIsWaitGame(true);
+    }
   };
 
   return (
@@ -69,24 +77,25 @@ export default function CanvasPlay() {
         <Box className="mt-10" />
         {/* Button Reset Container */}
         {isResultDisplay ? (
-          <Box className="w-full flex justify-end mb-5">
+          <Box className="w-full flex justify-end">
             <ButtonItem
               isRestartButton={true}
               display="Restart"
               onClick={() => restartGame()}
             />
           </Box>
-        ) : null}
-        {/* Button Container */}
-        <Box className="w-full flex justify-center items-center ">
-          {CHOICE_OPTION.map((data) => (
-            <ButtonItem
-              key={data.display}
-              display={data.display}
-              onClick={() => handleChoose(data.value)}
-            />
-          ))}
-        </Box>
+        ) : (
+          <Box className="w-full flex justify-center items-center ">
+            {/* Button Container */}
+            {CHOICE_OPTION.map((data) => (
+              <ButtonItem
+                key={data.display}
+                display={data.display}
+                onClick={() => handleChoose(data.value)}
+              />
+            ))}
+          </Box>
+        )}
       </Box>
     </Box>
   );
