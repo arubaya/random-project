@@ -36,7 +36,15 @@ export default function Router() {
         path="/simple-aimlab"
         element={
           <Header>
-            <Page.SimpleAimLab />
+            <Page.SimpleAimLabPage />
+          </Header>
+        }
+      />
+      <Route
+        path="/baguntas"
+        element={
+          <Header>
+            <Page.BaguntasPage />
           </Header>
         }
       />

@@ -35,13 +35,15 @@ export default function CanvasPlay({
       </Box>
       <Box id="canvas" className="relative w-full h-full cursor-crosshair">
         <Box
-          onClick={(e) => handleClickTarget(e)}
+          onMouseDown={(e) => handleClickTarget(e)}
+          onTouchStart={(e) => handleClickTarget(e)}
           id="target-miss"
           className="z-10 w-full h-full absolute"
         />
         <Box
           id="target"
-          onClick={(e) => handleClickTarget(e)}
+          onMouseDown={(e) => handleClickTarget(e)}
+          onTouchStart={(e) => handleClickTarget(e)}
           sx={{
             ...move,
             display: hide ? 'none' : 'block',

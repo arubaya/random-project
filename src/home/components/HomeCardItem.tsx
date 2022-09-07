@@ -11,7 +11,7 @@ interface HomeCardItemProps {
 export default function HomeCardItem({ image, title, to }: HomeCardItemProps) {
   return (
     <NavLink to={to} className="no-underline text-inherit">
-      <Card sx={{ maxWidth: 300 }}>
+      <Card sx={{ maxWidth: 300, minWidth: 250 }}>
         <CardMedia component="img" height="140" image={image} alt={title} />
         <CardContent>
           <Typography variant="h5" className="font-semibold">

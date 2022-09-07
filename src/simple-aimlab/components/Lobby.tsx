@@ -27,7 +27,9 @@ export default function Lobby({
     <Box className="w-full h-full flex flex-col justify-center items-center">
       <Box
         className="flex w-full flex-col items-center cursor-pointer"
-        onClick={() => setStart(true)}
+        onClick={() => {
+          if (levelChoose !== 0) setStart(true);
+        }}
       >
         <PlayCircleFilledRounded sx={{ fontSize: '60px' }} />
         <Typography className="font-bold text-4xl mt-4">Start</Typography>

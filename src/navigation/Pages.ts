@@ -6,7 +6,8 @@
 import NeumorphismCalcPage from '../neumorphism-calc/NeumorphismCalcPage';
 import SudokuSolverPage from '../sudoku-solver/SudokuSolverPage';
 import HummingbirdPage from '../hummingbird/HummingbirdPage';
-import SimpleAimLab from '../simple-aimlab/SimpleAimLab';
+import SimpleAimLabPage from '../simple-aimlab/SimpleAimLabPage';
+import BaguntasPage from '../baguntas/BaguntasPage';
 
 import HomePage from '../home/HomePage';
 
@@ -15,5 +16,6 @@ export {
   HomePage,
   SudokuSolverPage,
   HummingbirdPage,
-  SimpleAimLab,
+  SimpleAimLabPage,
+  BaguntasPage,
 };

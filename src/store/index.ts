@@ -10,4 +10,5 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
+export const dispatch = store.dispatch;
 export default store;

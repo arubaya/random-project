@@ -5,7 +5,7 @@ import { animateDiv } from './services';
 import CanvasPlay from './components/CanvasPlay';
 import Lobby from './components/Lobby';
 
-export default function SimpleAimLab() {
+export default function SimpleAimLabPage() {
   const LEVEL_OPT = [
     {
       display: '-',
@@ -49,7 +49,6 @@ export default function SimpleAimLab() {
 
   const handleRandomMove = () => {
     const canvasEl = document.getElementById('canvas');
-    console.log(intervalTime);
     setRandomMove(
       animateDiv(
         canvasEl?.offsetWidth as number,
@@ -63,7 +62,6 @@ export default function SimpleAimLab() {
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     const el = e.currentTarget.id;
-    console.log(el);
     if (el === 'target-miss') {
       setMissCount(missCount + 1);
     } else {
