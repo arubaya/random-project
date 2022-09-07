@@ -12,18 +12,18 @@ export default function HummingbirdPage() {
   });
 
   React.useEffect(() => {
-    const canvasEl = document.getElementById('canvas');
-    setInterval(
-      () =>
-        setRandomMove(
-          animateDiv(
-            canvasEl?.offsetWidth as number,
-            canvasEl?.offsetHeight as number
-          )
-        ),
-      1000
-    );
+    setInterval(() => handleMove(), 2000);
   }, []);
+
+  const handleMove = () => {
+    const canvasEl = document.getElementById('canvas');
+    setRandomMove(
+      animateDiv(
+        canvasEl?.offsetWidth as number,
+        canvasEl?.offsetHeight as number
+      )
+    );
+  };
 
   return (
     <Box className="w-full h-full flex flex-col justify-center items-center p-6">
@@ -32,6 +32,8 @@ export default function HummingbirdPage() {
       </Typography>
       <Box id="canvas" className="w-full h-full">
         <Box
+          onMouseOver={() => handleMove()}
+          onClick={() => handleMove()}
           sx={{
             ...randomMove,
           }}

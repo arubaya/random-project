@@ -11,7 +11,7 @@ export default function HomePage() {
     >
       <Box className="p-6 min-w-[80%]">
         <Typography variant="h1" className="font-bold mb-8">
-          Personal Demo Project
+          Random Project
         </Typography>
         <Box
           sx={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}

@@ -17,17 +17,17 @@ const botChoiceBrain = () => {
 const handleGameWinner = ({ player1, player2 }: PlayersChoiceData) => {
   let winnerPlayer: string;
 
-  if (player1.choice == '🖐' && player2.choice == '✌') {
+  if (player1.choice === '🖐' && player2.choice === '✌') {
     return (winnerPlayer = player2.name);
-  } else if (player1.choice == '🖐' && player2.choice == '✊') {
+  } else if (player1.choice === '🖐' && player2.choice === '✊') {
     return (winnerPlayer = player1.name);
-  } else if (player1.choice == '✌' && player2.choice == '🖐') {
+  } else if (player1.choice === '✌' && player2.choice === '🖐') {
     return (winnerPlayer = player1.name);
-  } else if (player1.choice == '✌' && player2.choice == '✊') {
+  } else if (player1.choice === '✌' && player2.choice === '✊') {
     return (winnerPlayer = player2.name);
-  } else if (player1.choice == '✊' && player2.choice == '🖐') {
+  } else if (player1.choice === '✊' && player2.choice === '🖐') {
     return (winnerPlayer = player2.name);
-  } else if (player1.choice == '✊' && player2.choice == '✌') {
+  } else if (player1.choice === '✊' && player2.choice === '✌') {
     return (winnerPlayer = player1.name);
   } else {
     return (winnerPlayer = 'SERI');
