@@ -1,5 +1,5 @@
 import socketio from 'socket.io-client';
-import { handleGameWinner } from '.';
+import { handleGameWinner, restartGame } from '.';
 import store, { dispatch } from '../../store';
 import {
   setCountingDown,
@@ -71,6 +71,17 @@ export const onRoomPlayers = () => {
         roomPlayers: roomData.roomPlayers,
       })
     );
+  });
+};
+
+export const socketRestartGame = () => {
+  const { roomData } = store.getState().baguntasReducer;
+  socket.emit('restartGame', roomData.roomId);
+};
+
+export const onRestartedGame = () => {
+  socket.on('restartedGame', () => {
+    restartGame();
   });
 };
 

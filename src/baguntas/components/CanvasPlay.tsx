@@ -13,7 +13,7 @@ import {
   withBotGameplayMode,
 } from '../services';
 import { PeopleRounded } from '@mui/icons-material';
-import { disconectSocket } from '../services/socketHandler';
+import { disconectSocket, socketRestartGame } from '../services/socketHandler';
 
 export default function CanvasPlay() {
   const CHOICE_OPTION = [
@@ -63,6 +63,13 @@ export default function CanvasPlay() {
       }
       dispatch(setIsLobby(true));
     }
+  };
+
+  const handleRestartGame = () => {
+    if (gameMode === 'multi') {
+      socketRestartGame();
+    }
+    restartGame();
   };
 
   return (
@@ -133,7 +140,7 @@ export default function CanvasPlay() {
             <ButtonItem
               isRestartButton={true}
               display="Restart"
-              onClick={() => restartGame()}
+              onClick={() => handleRestartGame()}
             />
           </Box>
         ) : (

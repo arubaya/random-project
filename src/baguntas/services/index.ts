@@ -15,6 +15,7 @@ import {
   onJoinRoom,
   onJoinRoomStatus,
   onPlayer2Choice,
+  onRestartedGame,
   onRoomPlayers,
   onStarted,
   sendChoice,
@@ -109,6 +110,7 @@ export const multiPlayerGameMode = (
   onJoinedPlayer();
   onRoomPlayers();
   onDisconectOtherPlayer();
+  onRestartedGame();
 };
 
 export const handlePlayerMultiChoice = (choice: string) => {
