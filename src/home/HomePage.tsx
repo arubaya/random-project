@@ -18,7 +18,12 @@ export default function HomePage() {
           className="w-full grid gap-4"
         >
           {projectList.map((data) => (
-            <HomeCardItem image={data.image} title={data.title} to={data.to} />
+            <HomeCardItem
+              key={data.to}
+              image={data.image}
+              title={data.title}
+              to={data.to}
+            />
           ))}
         </Box>
       </Box>

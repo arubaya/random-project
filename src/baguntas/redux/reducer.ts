@@ -6,14 +6,25 @@ import {
   PLAYERS_CHOICE,
   WINNER_NAME,
   COUNT_DOWN,
+  GAME_MODE,
+  IS_LOBBY,
+  ROOM_DATA,
+  IS_STARTED,
 } from './types';
 
 const initialState: BaguntasInitialState = {
+  isStarted: false,
   yourChoice: '-',
-  yourName: 'Player 1',
+  yourName: 'You',
   winnerName: '',
+  isLobby: true,
+  roomData: {
+    roomId: '',
+    roomPlayers: 0,
+  },
   countDown: 3,
   isResultDisplay: false,
+  gameMode: 'single',
   playersChoice: {
     player1: {
       choice: '',
@@ -60,6 +71,26 @@ const reducer = (
       return {
         ...state,
         countDown: action.payload as typeof state.countDown,
+      };
+    case GAME_MODE:
+      return {
+        ...state,
+        gameMode: action.payload as typeof state.gameMode,
+      };
+    case IS_LOBBY:
+      return {
+        ...state,
+        isLobby: action.payload as typeof state.isLobby,
+      };
+    case ROOM_DATA:
+      return {
+        ...state,
+        roomData: action.payload as typeof state.roomData,
+      };
+    case IS_STARTED:
+      return {
+        ...state,
+        isStarted: action.payload as typeof state.isStarted,
       };
     default:
       return state;

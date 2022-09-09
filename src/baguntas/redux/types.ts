@@ -4,3 +4,7 @@ export const WINNER_NAME = 'WINNER_NAME';
 export const PLAYERS_CHOICE = 'PLAYERS_CHOICE';
 export const IS_RESULT = 'IS_RESULT';
 export const COUNT_DOWN = 'COUNT_DOWN';
+export const GAME_MODE = 'GAME_MODE';
+export const IS_LOBBY = 'IS_LOBBY';
+export const ROOM_DATA = 'ROOM_DATA';
+export const IS_STARTED = 'IS_STARTED';

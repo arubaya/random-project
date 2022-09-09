@@ -16,7 +16,7 @@ export default function ButtonItem({
       {...props}
       className={`min-w-[40px] p-4 rounded-md cursor-pointer select-none ${
         isRestartButton
-          ? 'text-md text-red-500 font-semibold w-full text-center'
+          ? 'text-base text-red-500 font-semibold w-full text-center'
           : 'text-4xl'
       } mx-3`}
       sx={{

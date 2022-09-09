@@ -1,12 +1,25 @@
-import { PlayerData, PlayersChoiceData } from '..';
+import { MultiPlayerMode, PlayersChoiceData } from '..';
 import store, { dispatch } from '../../store';
 import {
   setCountingDown,
   setIsResultDisplay,
+  setIsStarted,
   setPlayersChoice,
   setWinnerName,
   setYourChoice,
 } from '../redux/actions';
+import {
+  onCreateRoom,
+  onDisconectOtherPlayer,
+  onJoinedPlayer,
+  onJoinRoom,
+  onJoinRoomStatus,
+  onPlayer2Choice,
+  onRoomPlayers,
+  onStarted,
+  sendChoice,
+  startTheGame,
+} from './socketHandler';
 
 const botChoiceBrain = () => {
   const option = ['🖐', '✌', '✊'];
@@ -14,7 +27,7 @@ const botChoiceBrain = () => {
   return randomChoice;
 };
 
-const handleGameWinner = ({ player1, player2 }: PlayersChoiceData) => {
+export const handleGameWinner = ({ player1, player2 }: PlayersChoiceData) => {
   let winnerPlayer: string;
 
   if (player1.choice === '🖐' && player2.choice === '✌') {
@@ -79,6 +92,42 @@ export const withBotGameplayMode = () => {
       countDownNum--;
     }
   }, 1000);
+};
+
+export const multiPlayerGameMode = (
+  multiMode: MultiPlayerMode,
+  gameChoice: any
+) => {
+  if (multiMode === 'create') {
+    onCreateRoom(gameChoice);
+  } else {
+    onJoinRoom();
+    onJoinRoomStatus(gameChoice);
+  }
+  onStarted();
+  onPlayer2Choice();
+  onJoinedPlayer();
+  onRoomPlayers();
+  onDisconectOtherPlayer();
+};
+
+export const handlePlayerMultiChoice = (choice: string) => {
+  const { yourName, playersChoice } = store.getState().baguntasReducer;
+  sendChoice(choice);
+  dispatch(
+    setPlayersChoice({
+      ...playersChoice,
+      player1: {
+        name: yourName,
+        choice,
+      },
+    })
+  );
+};
+
+export const handleStartGame = () => {
+  dispatch(setIsStarted(true));
+  startTheGame();
 };
 
 export const restartGame = () => {
