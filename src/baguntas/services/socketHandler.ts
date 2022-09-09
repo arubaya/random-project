@@ -10,7 +10,7 @@ import {
   setWinnerName,
 } from '../redux/actions';
 
-const ENDPOINT = process.env.REACT_APP_ENDPOINT as string;
+const ENDPOINT = `${process.env.REACT_APP_ENDPOINT}/baguntas`;
 const socket = socketio(ENDPOINT, { autoConnect: false });
 
 export const onCreateRoom = (gameChoice: any) => {
