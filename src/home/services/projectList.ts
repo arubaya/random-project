@@ -4,6 +4,7 @@ import SudokuSolverImage from '../../assets/images/sudoku-solver-priview.png';
 import HummingbirdPreview from '../../assets/images/hummingbird-preview.png';
 import AimlabPreview from '../../assets/images/aimlab-preview.png';
 import BaguntasPreview from '../../assets/images/baguntas-preview.png';
+import WinClonePreview from '../../assets/images/win-clone-preview.png';
 
 const projectList = [
   {
@@ -30,6 +31,11 @@ const projectList = [
     image: BaguntasPreview,
     to: '/baguntas',
     title: 'Baguntas (Batu-Gunting-Kertas)',
+  },
+  {
+    image: WinClonePreview,
+    to: '/win-clone',
+    title: 'Windows 11 Clone',
   },
 ];
 

@@ -48,6 +48,7 @@ export default function Router() {
           </Header>
         }
       />
+      <Route path="/win-clone" element={<Page.WinClonePage />} />
     </Routes>
   );
 }

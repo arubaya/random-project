@@ -8,6 +8,7 @@ import SudokuSolverPage from '../sudoku-solver/SudokuSolverPage';
 import HummingbirdPage from '../hummingbird/HummingbirdPage';
 import SimpleAimLabPage from '../simple-aimlab/SimpleAimLabPage';
 import BaguntasPage from '../baguntas/BaguntasPage';
+import WinClonePage from '../win-clone/WinClonePage';
 
 import HomePage from '../home/HomePage';
 
@@ -18,4 +19,5 @@ export {
   HummingbirdPage,
   SimpleAimLabPage,
   BaguntasPage,
+  WinClonePage,
 };
