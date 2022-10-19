@@ -9,6 +9,7 @@ import HummingbirdPage from '../hummingbird/HummingbirdPage';
 import SimpleAimLabPage from '../simple-aimlab/SimpleAimLabPage';
 import BaguntasPage from '../baguntas/BaguntasPage';
 import WinClonePage from '../win-clone/WinClonePage';
+import SpotifyPlayerPage from '../spotify-player/SpotifyPlayerPage';
 
 import HomePage from '../home/HomePage';
 
@@ -20,4 +21,5 @@ export {
   SimpleAimLabPage,
   BaguntasPage,
   WinClonePage,
+  SpotifyPlayerPage,
 };

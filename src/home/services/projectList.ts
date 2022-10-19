@@ -5,6 +5,7 @@ import HummingbirdPreview from '../../assets/images/hummingbird-preview.png';
 import AimlabPreview from '../../assets/images/aimlab-preview.png';
 import BaguntasPreview from '../../assets/images/baguntas-preview.png';
 import WinClonePreview from '../../assets/images/win-clone-preview.png';
+import SpotifyPlayerPreview from '../../assets/images/spotify-player-preview.png';
 
 const projectList = [
   {
@@ -36,6 +37,11 @@ const projectList = [
     image: WinClonePreview,
     to: '/win-clone',
     title: 'Windows 11 Clone',
+  },
+  {
+    image: SpotifyPlayerPreview,
+    to: '/spotify-player',
+    title: 'Spotify Player',
   },
 ];
 

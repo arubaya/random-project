@@ -48,6 +48,14 @@ export default function Router() {
           </Header>
         }
       />
+      <Route
+        path="/spotify-player"
+        element={
+          <Header>
+            <Page.SpotifyPlayerPage />
+          </Header>
+        }
+      />
       <Route path="/win-clone" element={<Page.WinClonePage />} />
     </Routes>
   );
