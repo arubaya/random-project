@@ -10,6 +10,7 @@ import SimpleAimLabPage from '../simple-aimlab/SimpleAimLabPage';
 import BaguntasPage from '../baguntas/BaguntasPage';
 import WinClonePage from '../win-clone/WinClonePage';
 import SpotifyPlayerPage from '../spotify-player/SpotifyPlayerPage';
+import KamusAlayPage from '../kamus-alay/KamusAlayPage';
 
 import HomePage from '../home/HomePage';
 
@@ -22,4 +23,5 @@ export {
   BaguntasPage,
   WinClonePage,
   SpotifyPlayerPage,
+  KamusAlayPage,
 };

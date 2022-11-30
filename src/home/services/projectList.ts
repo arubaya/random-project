@@ -6,6 +6,7 @@ import AimlabPreview from '../../assets/images/aimlab-preview.png';
 import BaguntasPreview from '../../assets/images/baguntas-preview.png';
 import WinClonePreview from '../../assets/images/win-clone-preview.png';
 import SpotifyPlayerPreview from '../../assets/images/spotify-player-preview.png';
+import KamusAlayPreview from '../../assets/images/kamus-alay-preview.png';
 
 const projectList = [
   {
@@ -42,6 +43,11 @@ const projectList = [
     image: SpotifyPlayerPreview,
     to: '/spotify-player',
     title: 'Spotify Player',
+  },
+  {
+    image: KamusAlayPreview,
+    to: '/kamus-alay',
+    title: 'Kamus Bahasa Alay',
   },
 ];
 
