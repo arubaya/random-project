@@ -11,6 +11,7 @@ import BaguntasPage from '../baguntas/BaguntasPage';
 import WinClonePage from '../win-clone/WinClonePage';
 import SpotifyPlayerPage from '../spotify-player/SpotifyPlayerPage';
 import KamusAlayPage from '../kamus-alay/KamusAlayPage';
+import TextToPasswordPage from '../text-to-password/TextToPasswordPage';
 
 import HomePage from '../home/HomePage';
 
@@ -24,4 +25,5 @@ export {
   WinClonePage,
   SpotifyPlayerPage,
   KamusAlayPage,
+  TextToPasswordPage,
 };

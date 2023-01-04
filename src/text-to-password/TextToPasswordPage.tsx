@@ -35,7 +35,7 @@ export default function TextToPasswordPage() {
   return (
     <Box className="w-full flex flex-col justify-center items-center">
       <Typography variant="h2" className="font-semibold mb-5">
-        Kamus AL4y
+        Text to Password Converter
       </Typography>
       <Box
         component="form"
@@ -44,7 +44,7 @@ export default function TextToPasswordPage() {
       >
         <TextField
           value={baseText}
-          label="Masukan teks disini"
+          label="Drop your text here"
           onChange={onChangeBaseText}
           size="small"
         />
@@ -53,7 +53,7 @@ export default function TextToPasswordPage() {
           variant="contained"
           className="mt-4 md:mt-0 md:ml-4"
         >
-          Terjemahkan!
+          Convert
         </Button>
         <Button
           variant="outlined"
@@ -65,7 +65,7 @@ export default function TextToPasswordPage() {
       </Box>
       <Box className="mt-5 min-w-[250px] p-4 rounded shadow-md">
         <Typography variant="h6" className="font-semibold">
-          Hasil:
+          Result:
         </Typography>
         <Typography className="min-h-[30px]">{alayText}</Typography>
         {alayText !== '' && (
@@ -75,7 +75,7 @@ export default function TextToPasswordPage() {
             color="success"
             variant="outlined"
           >
-            {isCopied ? 'Disalin!' : 'Salin teks'}
+            {isCopied ? 'Copied!' : 'Copy Text'}
           </Button>
         )}
       </Box>

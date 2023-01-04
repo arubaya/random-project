@@ -53,5 +53,6 @@ export const getAlayWord = (value: string) => {
         return letter;
       }
     })
+    .filter((letter) => letter !== ' ')
     .join('');
 };

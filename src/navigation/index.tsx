@@ -64,6 +64,14 @@ export default function Router() {
           </Header>
         }
       />
+      <Route
+        path="/text-to-password"
+        element={
+          <Header>
+            <Page.TextToPasswordPage />
+          </Header>
+        }
+      />
       <Route path="/win-clone" element={<Page.WinClonePage />} />
     </Routes>
   );

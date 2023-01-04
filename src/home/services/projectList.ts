@@ -7,6 +7,7 @@ import BaguntasPreview from '../../assets/images/baguntas-preview.png';
 import WinClonePreview from '../../assets/images/win-clone-preview.png';
 import SpotifyPlayerPreview from '../../assets/images/spotify-player-preview.png';
 import KamusAlayPreview from '../../assets/images/kamus-alay-preview.png';
+import TextToPasswordPreview from '../../assets/images/text-to-password-preview.png';
 
 const projectList = [
   {
@@ -43,6 +44,11 @@ const projectList = [
     image: SpotifyPlayerPreview,
     to: '/spotify-player',
     title: 'Spotify Player',
+  },
+  {
+    image: TextToPasswordPreview,
+    to: '/text-to-password',
+    title: 'Convert Text to Password',
   },
   {
     image: KamusAlayPreview,
