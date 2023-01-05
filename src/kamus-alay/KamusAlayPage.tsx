@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { getAlayWord } from './services';
 
-export default function TextToPasswordPage() {
+export default function KamusAlayPage() {
   const [baseText, setBaseText] = React.useState('');
   const [alayText, setAlayText] = React.useState('');
   const [isCopied, setIsCopied] = React.useState(false);

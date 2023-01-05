@@ -54,9 +54,13 @@ export default function Taskbar({ taskbarHeight }: TaskbarProps) {
   };
   return (
     <Box
-      sx={{ height: `${taskbarHeight}px`, bottom: taskbarGoDown ? -47 : 0 }}
+      sx={{
+        height: `${taskbarHeight}px`,
+        bottom: taskbarGoDown ? -47 : 0,
+        borderTop: '1px solid rgba(0,0,0,0.2)',
+      }}
       // onMouseOver={() => handlePopupTaskbar()}
-      className="w-full bg-white/80 backdrop-blur flex justify-between items-center px-2 py-1 fixed transition-all duration-500 z-50"
+      className="w-full bg-white/90 backdrop-blur flex justify-between items-center px-2 py-1 fixed transition-all duration-500 z-50"
     >
       <Box sx={{ width: toolbarWidth }} className="h-fit">
         <TaskbarButton icon={WidgetIcon} />

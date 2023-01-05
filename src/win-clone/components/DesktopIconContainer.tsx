@@ -5,15 +5,21 @@ interface DesktopIconContainerProps {
   icon: string;
   title: string;
   isForHome?: boolean;
+  onClick: () => void;
 }
 
 export default function DesktopIconContainer({
   icon,
   title,
   isForHome,
+  onClick,
 }: DesktopIconContainerProps) {
   return (
-    <Box className="w-20 h-16 flex flex-col items-center justify-center my-2 mx-1 hover:bg-white/10 border hover:border-white/20 hover:border-solid select-none">
+    <Box
+      component="div"
+      onDoubleClick={() => onClick()}
+      className="w-20 h-16 flex flex-col items-center justify-center my-2 mx-1 hover:bg-white/10 border hover:border-white/20 hover:border-solid select-none"
+    >
       <Box className={`${isForHome ? 'h-6' : 'h-8'} flex`}>
         <img src={icon} alt={title} className="h-full" />
       </Box>

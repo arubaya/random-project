@@ -46,7 +46,6 @@ export const getAlayWord = (value: string) => {
     .toLowerCase()
     .split('')
     .map((letter) => {
-      console.log(letter, REGEX_SYMBOL.test(letter));
       if (REGEX_SYMBOL.test(letter) && letter !== '') {
         return getRandomString(DICTIONARY[letter]);
       } else {

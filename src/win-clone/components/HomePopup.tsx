@@ -43,7 +43,10 @@ export default function HomePopup() {
   };
 
   return (
-    <Box className="w-fit h-full flex items-end relative z-50 ">
+    <Box
+      className="w-fit h-full flex items-end relative"
+      sx={{ zIndex: isHomePopup ? 50 : 0 }}
+    >
       <Box
         sx={{ bottom: isHomePopup ? 8 : -500, opacity: isHomePopup ? 1 : 0 }}
         className="w-[550px] h-max-[585px] h-[90%] bg-white/80 backdrop-blur-lg rounded-lg flex flex-col items-center relative transition-all duration-300 shadow-lg shadow-black/40 select-none"
@@ -83,9 +86,10 @@ export default function HomePopup() {
             {pinnedAppList.map((data) => (
               <DesktopIconContainer
                 icon={data.icon}
-                key={data.icon}
+                key={data.title}
                 title={data.title}
                 isForHome={true}
+                onClick={data.onClick}
               />
             ))}
           </Box>
@@ -108,10 +112,10 @@ export default function HomePopup() {
           <Box className="w-full grid grid-cols-2">
             {recomendedAppList.map((data) => (
               <RecomendedAppContainer
-                desc={data.desc}
+                desc={data.desc as string}
                 title={data.title}
                 icon={data.icon}
-                key={data.icon}
+                key={data.title}
               />
             ))}
           </Box>
