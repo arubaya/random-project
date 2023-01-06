@@ -8,6 +8,7 @@ import {
   changeWindowSize,
   closeWindowApp,
   handleDragWindowApp,
+  minimizeWindowApp,
 } from '../services/titleBar';
 import {
   AppWindowLayoutProps,
@@ -59,7 +60,7 @@ function AppWindowTitlebar({
       ref={titleBar}
       component="div"
       sx={{ color: textColor, backgroundColor: appColor }}
-      className="w-full h-9 flex items-center justify-between"
+      className="w-full h-9 flex items-center justify-between select-none"
     >
       <Box className="flex items-center w-full px-2">
         <Box className="w-[15px] h-full flex justify-center items-center">
@@ -75,7 +76,7 @@ function AppWindowTitlebar({
       </Box>
       <Box className="h-full flex pb-1">
         <AppWindowTitlebarButton
-          onCLick={() => console.log('minimize', appId)}
+          onCLick={() => minimizeWindowApp(appId, windowStatus)}
           icon={minimizeIcon}
           isCloseButton={false}
         />
@@ -115,8 +116,9 @@ export default function AppWindowLayout({ data }: AppWindowLayoutProps) {
           data.windowStatus === 'maxmin'
             ? '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)'
             : '0px',
+        // opacity: data.windowStatus === 'minimize' ? 0 : 1,
       }}
-      className="transition-all flex flex-col absolute overflow-hidden"
+      className="transition-all duration-300 flex flex-col absolute overflow-hidden"
     >
       <AppWindowTitlebar
         appColor={data.appColor}

@@ -24,9 +24,21 @@ export interface AppWindowLayoutProps {
   data: TaskManagerData;
 }
 
-export interface TaskManagerData extends AppWindowTitlebarProps {
+export interface TaskManagerData
+  extends AppWindowTitlebarProps,
+    DefaultTaskConfig {
   appId: string;
   appComponent: JSX.Element | string;
+}
+
+export interface AppIconData {
+  icon: string;
+  title: string;
+  desc?: string;
+  onClick: () => void;
+}
+
+export interface DefaultTaskConfig {
   size?: {
     width: string;
     height: string;
@@ -38,11 +50,4 @@ export interface TaskManagerData extends AppWindowTitlebarProps {
   zIndex: number;
   windowStatus: 'maximize' | 'minimize' | 'maxmin' | 'close';
   isActive: boolean;
-}
-
-export interface AppIconData {
-  icon: string;
-  title: string;
-  desc?: string;
-  onClick: () => void;
 }

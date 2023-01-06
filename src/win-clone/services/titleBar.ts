@@ -16,12 +16,12 @@ export const changeWindowSize = (
                 ...task,
                 windowStatus: 'maxmin',
                 size: {
-                  width: '600px',
-                  height: '400px',
+                  width: '60%',
+                  height: '90%',
                 },
                 pos: {
-                  x: 'calc(100% - 900px)',
-                  y: 'calc(100% - 500px)',
+                  x: '10%',
+                  y: '10%',
                 },
               };
             case 'maximize':
@@ -62,22 +62,26 @@ export const handleDragWindowApp = (el: HTMLDivElement, appId: string) => {
   let newLeftPos = 0;
 
   const elParent = el.parentElement as HTMLDivElement;
+  const firstChild = el.firstChild as HTMLDivElement;
 
   const dragMouseDown = (e: MouseEvent) => {
     e.preventDefault();
     elParent.classList.remove('transition-all');
+    elParent.classList.remove('duration-300');
     // get the mouse cursor position at startup:
     pos3 = e.clientX;
     pos4 = e.clientY;
+
+    makeWindowAppOnTop(appId);
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
   };
 
   const elementDrag = (e: MouseEvent) => {
-    // const { tasksManager } = store.getState().winCloneReducer;
     e.preventDefault();
     elParent.classList.remove('transition-all');
+    elParent.classList.remove('duration-300');
     // calculate the new cursor position:
     pos1 = pos3 - e.clientX;
     pos2 = pos4 - e.clientY;
@@ -87,31 +91,8 @@ export const handleDragWindowApp = (el: HTMLDivElement, appId: string) => {
     newTopPos = elParent.offsetTop - pos2;
     newLeftPos = elParent.offsetLeft - pos1;
 
-    elParent.style.top = newTopPos + 'px';
-    elParent.style.left = newLeftPos + 'px';
-
-    // dispatch(
-    //   setTaskManagerData(
-    //     tasksManager.map((task) => {
-    //       if (task.appId === appId) {
-    //         return {
-    //           ...task,
-    //           windowStatus: 'maxmin',
-    //           pos: {
-    //             x: `${newTopPos}px`,
-    //             y: `${newLeftPos}px`,
-    //           },
-    //           size: {
-    //             width: '600px',
-    //             height: '400px',
-    //           },
-    //         };
-    //       } else {
-    //         return task;
-    //       }
-    //     })
-    //   )
-    // );
+    elParent.style.top = (newTopPos < 0 ? 0 : newTopPos) + 'px';
+    elParent.style.left = (newLeftPos < 0 ? 0 : newLeftPos) + 'px';
   };
 
   const closeDragElement = () => {
@@ -119,17 +100,18 @@ export const handleDragWindowApp = (el: HTMLDivElement, appId: string) => {
     dispatch(
       setTaskManagerData(
         tasksManager.map((task) => {
-          if (task.appId === appId) {
+          const isMove = newLeftPos > 0 && newTopPos > 0;
+          if (task.appId === appId && isMove) {
             return {
               ...task,
               windowStatus: 'maxmin',
               pos: {
-                x: `${newTopPos}px`,
-                y: `${newLeftPos}px`,
+                x: `${newLeftPos}px`,
+                y: `${newTopPos}px`,
               },
               size: {
-                width: '600px',
-                height: '400px',
+                width: '60%',
+                height: '90%',
               },
             };
           } else {
@@ -139,50 +121,106 @@ export const handleDragWindowApp = (el: HTMLDivElement, appId: string) => {
       )
     );
     elParent.classList.add('transition-all');
+    elParent.classList.add('duration-300');
     document.onmouseup = null;
     document.onmousemove = null;
+    elParent.style.removeProperty('top');
+    elParent.style.removeProperty('left');
   };
 
-  el.onmousedown = dragMouseDown;
+  firstChild.onmousedown = dragMouseDown;
 };
 
-// function dragElement(elmnt) {
-//   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-//   if (document.getElementById(elmnt.id + "header")) {
-//     // if present, the header is where you move the DIV from:
-//     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-//   } else {
-//     // otherwise, move the DIV from anywhere inside the DIV:
-//     elmnt.onmousedown = dragMouseDown;
-//   }
+export const endAllTask = () => {
+  dispatch(setTaskManagerData([]));
+};
 
-//   function dragMouseDown(e) {
-//     e = e || window.event;
-//     e.preventDefault();
-//     // get the mouse cursor position at startup:
-//     pos3 = e.clientX;
-//     pos4 = e.clientY;
-//     document.onmouseup = closeDragElement;
-//     // call a function whenever the cursor moves:
-//     document.onmousemove = elementDrag;
-//   }
+export const makeWindowAppOnTop = (
+  appId: string,
+  isChangeWindowStatus?: boolean
+) => {
+  const { tasksManager } = store.getState().winCloneReducer;
+  dispatch(
+    setTaskManagerData(
+      tasksManager.map((task) => {
+        if (task.appId === appId) {
+          if (task.windowStatus === 'minimize') {
+            return {
+              ...task,
+              windowStatus: 'maximize',
+              isActive: true,
+              size: {
+                width: '100%',
+                height: '100%',
+              },
+              pos: {
+                x: '0px',
+                y: '0px',
+              },
+            };
+          } else {
+            return {
+              ...task,
+              windowStatus: isChangeWindowStatus ? 'maxmin' : task.windowStatus,
+              isActive: true,
+              zIndex:
+                task.zIndex <= tasksManager.length + 11
+                  ? 11 + tasksManager.length
+                  : task.zIndex,
+            };
+          }
+        } else {
+          return {
+            ...task,
+            windowStatus: isChangeWindowStatus ? 'maxmin' : task.windowStatus,
+            isActive: false,
+            zIndex: task.zIndex === 11 ? task.zIndex : task.zIndex - 1,
+          };
+        }
+      })
+    )
+  );
+};
 
-//   function elementDrag(e) {
-//     e = e || window.event;
-//     e.preventDefault();
-//     // calculate the new cursor position:
-//     pos1 = pos3 - e.clientX;
-//     pos2 = pos4 - e.clientY;
-//     pos3 = e.clientX;
-//     pos4 = e.clientY;
-//     // set the element's new position:
-//     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-//     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-//   }
-
-//   function closeDragElement() {
-//     // stop moving when mouse button is released:
-//     document.onmouseup = null;
-//     document.onmousemove = null;
-//   }
-// }
+export const minimizeWindowApp = (appId: string, windowStatus: string) => {
+  const { tasksManager } = store.getState().winCloneReducer;
+  dispatch(
+    setTaskManagerData(
+      tasksManager.map((task) => {
+        if (task.appId === appId) {
+          if (windowStatus === 'minimize') {
+            return {
+              ...task,
+              windowStatus: 'maximize',
+              isActive: true,
+              size: {
+                width: '100%',
+                height: '100%',
+              },
+              pos: {
+                x: '0px',
+                y: '0px',
+              },
+            };
+          } else {
+            return {
+              ...task,
+              windowStatus: 'minimize',
+              isActive: false,
+              size: {
+                width: '0px',
+                height: '0px',
+              },
+              pos: {
+                x: '30%',
+                y: '200%',
+              },
+            };
+          }
+        } else {
+          return task;
+        }
+      })
+    )
+  );
+};

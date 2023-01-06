@@ -33,7 +33,7 @@ export default function TextToPasswordPage() {
   };
 
   return (
-    <Box className="w-full flex flex-col justify-center items-center">
+    <Box className="w-full min-w-[500px] min-h-[300px] flex flex-col justify-center items-center">
       <Typography variant="h2" className="font-semibold mb-5">
         Text to Password Converter
       </Typography>

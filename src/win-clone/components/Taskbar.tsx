@@ -29,7 +29,7 @@ export default function Taskbar({ taskbarHeight }: TaskbarProps) {
   const [time, setTime] = React.useState(moment().format('LT'));
   const [taskbarGoDown, setTaskbarGoDown] = React.useState(false);
 
-  const { isHomePopup } = useSelector(
+  const { isHomePopup, tasksManager } = useSelector(
     (state: RootState) => state.winCloneReducer
   );
 
@@ -65,22 +65,30 @@ export default function Taskbar({ taskbarHeight }: TaskbarProps) {
       <Box sx={{ width: toolbarWidth }} className="h-fit">
         <TaskbarButton icon={WidgetIcon} />
       </Box>
-      <Box className="flex">
+      <Box className="flex transition-all w-fit">
         <Box className="mx-1" onClick={() => handleClickHome()}>
           <TaskbarButton icon={HomeIcon} />
         </Box>
         <Box className="mx-1">
           <TaskbarButton icon={SearchIcon} />
         </Box>
-        <Box className="mx-1">
+        {/* <Box className="mx-1">
           <TaskbarButton icon={SettingIcon} />
-        </Box>
+        </Box> */}
         <Box className="mx-1">
           <TaskbarButton icon={ExplorerIcon} />
         </Box>
-        <Box className="mx-1">
-          <TaskbarButton icon={EdgeIcon} />
-        </Box>
+        {tasksManager.map((task) => (
+          <Box key={task.titleBarData.title} className="mx-1">
+            <TaskbarButton
+              appId={task.appId}
+              isApp={true}
+              icon={task.titleBarData.icon}
+              isActive={task.isActive}
+              windowStatus={task.windowStatus}
+            />
+          </Box>
+        ))}
       </Box>
       <Box className="flex w-fit" id="toolbar">
         <Box className="w-[25px] h-[40px] flex justify-center items-center hover:bg-white rounded transition-all select-none cursor-pointer">

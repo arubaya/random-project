@@ -20,6 +20,9 @@ import DesktopIconContainer from './DesktopIconContainer';
 import { pinnedAppList, recomendedAppList } from './homeIconApp';
 import { useNavigate } from 'react-router-dom';
 import RecomendedAppContainer from './RecomendedAppContainer';
+import { endAllTask } from '../services/titleBar';
+import { dispatch } from '../../store';
+import { setIsHomePopup } from '../redux/actions';
 
 export default function HomePopup() {
   const { isHomePopup } = useSelector(
@@ -39,6 +42,8 @@ export default function HomePopup() {
   };
 
   const handleShutdown = () => {
+    dispatch(setIsHomePopup(false));
+    endAllTask();
     navigate('/home', { replace: true });
   };
 
