@@ -11,7 +11,10 @@ import {
 } from '../redux/actions';
 
 const ENDPOINT = `${process.env.REACT_APP_ENDPOINT}/baguntas`;
-const socket = socketio(ENDPOINT, { autoConnect: false });
+const socket = socketio(ENDPOINT, {
+  autoConnect: false,
+  path: '/api/randpro/baguntas/socket.io',
+});
 
 export const onCreateRoom = (gameChoice: any) => {
   const roomId = Math.random().toString(36).substring(2, 8);
